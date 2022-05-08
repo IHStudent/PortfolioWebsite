@@ -1,64 +1,19 @@
-﻿@using Website.Components
-@inherits LayoutComponentBase
-@inject IDialogService Dialog
+﻿@inherits LayoutComponentBase
 
-
-<div class="page">
-	<div class="sidebar">
-		<NavMenu/>
-	</div>
-	<div class="main">
-		<div class="top-row px-4">
-			@if (_isLightMode)
-			{
-				<MudIconButton Icon="@Icons.Material.Filled.Brightness4" OnClick="@ToggleTheme"/>
-			}
-			else
-			{
-				<MudIconButton Icon="@Icons.Material.Filled.Brightness5" OnClick="@ToggleTheme"/>
-			}
-		</div>
-		<div class="content px-4">
+<MudLayout>
+	<AppBar OnSidebarToggled="ToggleSidebar" OnThemeToggled="ToggleTheme"/>
+	<NavMenu SideBarOpen="_sidebarOpen"/>
+	<MudMainContent Class="pt-16 px-16">
+		<MudContainer Class="mt-6">
 			@Body
-		</div>
-	</div>
-</div>
-
+		</MudContainer>
+	</MudMainContent>
+</MudLayout>
 <MudThemeProvider Theme="_currentTheme"/>
-<MudDialogProvider/>
-
 
 @code {
-	private bool _isLightMode = true;
-	private MudTheme _currentTheme = new MudTheme();
-	private int _counter;
-	private readonly DialogOptions _dialog = new DialogOptions() {DisableBackdropClick = true, NoHeader = true};
-
-	private void ToggleTheme()
-	{
-		_counter++;
-		switch (_counter)
-		{
-			case 5:
-				Dialog.Show<SeizureDialog>("Seizure Dialog", _dialog);
-				break;
-		}
-		_isLightMode = !_isLightMode;
-		_currentTheme = !_isLightMode ? GenerateDarkTheme() : new MudTheme();
-	}
-
-	private MudTheme GenerateDarkTheme() =>
-		new MudTheme
-		{
-			Palette = new Palette()
-			{
-				Black = "#27272f",
-				Background = "#32333d",
-				BackgroundGrey = "#27272f",
-				Surface = "#373740",
-				TextPrimary = "#ffffffb3",
-				TextSecondary = "rgba(255,255,255, 0.50)"
-			}
-		};
-
+	private MudTheme _currentTheme = AppBar.GenerateDarkTheme();
+	private bool _sidebarOpen = false;
+	private void ToggleTheme(MudTheme changedTheme) => _currentTheme = changedTheme;
+	private void ToggleSidebar() => _sidebarOpen = !_sidebarOpen;
 }

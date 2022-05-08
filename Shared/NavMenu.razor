@@ -1,39 +1,75 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Website</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
+﻿@using MudBlazor.Utilities
+<MudDrawer @bind-Open="SideBarOpen" Elevation="1">
+	<MudDrawerHeader>
+		<MudAvatar Rounded="true" Color="Color.Primary" Style="width:60px; height: 60px">
+			<style> 
+            		.box-area { 
+            		position: absolute; 
+            		transform-style: preserve-3d; animation-name: rotate; 
+            		animation-duration: 5s; 
+            		animation-timing-function: linear; 
+            		animation-iteration-count: infinite; 
+            		} 
+            		@@keyframes rotate { 
+            		0% { transform: rotate3d(0, 0, 0, 0); } 
+            		100% { transform: rotate3d(0, 1, 0, 360deg); }
+            		} 
+            		.box { 
+            		position: absolute; 
+            		width: 26px; height: 26px; 
+            		border: 5px solid rgb(51,47,47); 
+            		} 
+            		#box-front { 
+            		transform: translateX(-13px) translateY(-13px) translateZ(13px); 
+            		background: rgba(89, 74, 226, 0.5);
+            		} 
+            		#box-back { 
+            		transform: translateX(-13px) translateY(-13px) translateZ(-13px); 
+            		background: rgba(89, 74, 226, 0.5); 
+            		} 
+            		#box-right { 
+            		transform: translateY(-13px) rotateY(90deg); 
+            		background: rgba(89, 74, 226, 0.5);
+            		} 
+            		#box-left { 
+            		transform: translateY(-13px) translateX(-26px) rotateY(90deg); 
+            		background: rgba(89, 74, 226, 0.5); 
+            		} 
+            		#box-top { transform: translateX(-13px) translateY(-26px) rotateX(90deg); 
+            		background: rgba(89, 74, 226, 0.5);
+            		} 
+            		#box-bottom { 
+            		transform: translateX(-13px) rotateX(90deg); 
+            		background: rgba(89, 74, 226, 0.5);
+            		} 
+            		.box-area { 
+            		transform: rotateX(90deg) rotateY(90deg); 
+            		} 
+            	</style>
+			<div class="box-area">
+				<div id="box-front" class="box"></div>
+				<div id="box-right" class="box"></div>
+				<div id="box-back" class="box"></div>
+				<div id="box-left" class="box"></div>
+				<div id="box-top" class="box"></div>
+				<div id="box-bottom" class="box"></div>
+			</div>
+		</MudAvatar>
+		<MudText Typo="Typo.h5" Color="Color.Primary" Style="margin-top:-2px; margin-bottom:5px; margin-left:15px;">Ian's Portfolio</MudText>
+	</MudDrawerHeader>
+	<MudNavMenu>
+		<MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home">Home</MudNavLink>
+		<MudNavLink Href="/fetchdata" Icon="@Icons.Filled.Storage">FetchData</MudNavLink>
+		<MudNavGroup Title="Expanding" Icon="@Icons.Filled.DashboardCustomize" Expanded="true">
+			<MudNavLink Href="#" Icon="@Icons.Filled.Camera">Photos</MudNavLink>
+			<MudNavLink Href="#" Icon="@Icons.Filled.Celebration">Party</MudNavLink>
+		</MudNavGroup>
+	</MudNavMenu>
+</MudDrawer>
 
 @code {
-    private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+	[Parameter]
+	public bool SideBarOpen { get; set; }
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
 }
