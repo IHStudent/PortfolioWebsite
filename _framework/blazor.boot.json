@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Microsoft.AspNetCore.Components.dll": "sha256-Kvs9\/xgpoDtSmhMcZ11n6UkNB06WFGgu1DYxFgXJS10=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-hqohWzs0FO\/ju1AZVEjQJhNDjRi4dCrfk4k9\/klp\/zk=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-KdneSdSeGbAvAFUmcD2ccUlXr8gH4rj8HIQ3eLZcW5s=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-MKhQqRnVTtMsh7duAvTSSm6+AeVHmPseOkjNTDPZjpo=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-qLRev3iQ8+ob2712HwRtFUJchqBHMqm+gr9bbFz7t14=",
@@ -52,7 +52,7 @@
       "System.Text.Json.dll": "sha256-bG79Yd7SFL\/pyqECjtJUkpzWikrw6\/GtJS\/TOw7fM8Q=",
       "System.Text.RegularExpressions.dll": "sha256-QbE8EWe1npqJschNaP4T6f3fq9WSjnFaLZc1HI8BNEE=",
       "System.Threading.dll": "sha256-toBzGDCjOk87Fho+Xc0BcvYSi6cRubBOWj6zSE5RhVE=",
-      "Website.dll": "sha256-eltgXwzQ+JTqa8udUsPKVeieQJdy89Ex2azeB0uW4lE="
+      "Website.dll": "sha256-q2RHdK\/NA3wCK6HRq8jJcfCsML92ydqtZOCQdz3RAmo="
     },
     "extensions": null,
     "lazyAssembly": null,
