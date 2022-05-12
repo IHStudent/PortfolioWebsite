@@ -12,4 +12,19 @@
     <PackageReference Include="MudBlazor" Version="6.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Pages\Index.razor.cs">
+      <DependentUpon>Index.razor.razor</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\app-store-badge.svg" />
+    <None Include="wwwroot\images\bg-cta.jpg" />
+    <None Include="wwwroot\images\bg-pattern.png" />
+    <None Include="wwwroot\images\demo-screen-1.jpg" />
+    <None Include="wwwroot\images\google-play-badge.svg" />
+    <None Include="wwwroot\images\iphone_6_plus_white_port.png" />
+  </ItemGroup>
+
 </Project>

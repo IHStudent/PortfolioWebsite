@@ -17,7 +17,6 @@ namespace Website.Shared
 
 		private async Task ToggleTheme()
 		{
-			
 			_isLightMode = !_isLightMode;
 
 			_currentTheme = !_isLightMode ? GenerateDarkTheme() : new MudTheme();
